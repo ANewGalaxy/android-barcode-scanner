@@ -109,6 +109,8 @@ public class TestScannerFragment extends ScannerFragment implements View.OnClick
 
         } else if (id == R.id.barcode_scanner_rescan_button) {
 
+            barcodeFormat = barcode = null;
+
             setFeedbackButtonsEnabled(false);
 
             resultTextView.setText(null);
