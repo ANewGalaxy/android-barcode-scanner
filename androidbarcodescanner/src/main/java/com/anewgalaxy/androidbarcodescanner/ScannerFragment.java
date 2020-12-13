@@ -26,6 +26,7 @@ public abstract class ScannerFragment extends Fragment {
 
     private AndroidBarcodeScannerView barcodeScannerView;
     private boolean scannerPaused = true;
+    private long scanDelay = 1500L;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -139,16 +140,22 @@ public abstract class ScannerFragment extends Fragment {
 
             scannerPaused = false;
 
-            Handler handler = new Handler(Looper.myLooper());
-            handler.postDelayed(() -> {
+            if (scanDelay > 0) {
 
-                // As long as the scanner hasn't been paused, start the decoder
-                if (!scannerPaused)
+                Handler handler = new Handler(Looper.myLooper());
+                handler.postDelayed(() -> {
 
-                    // Tells the decoder to stop after a single scan
-                    this.decodeSingle();
+                    // As long as the scanner hasn't been paused, start the decoder
+                    if (!scannerPaused)
 
-            }, 1500L);
+                        // Tells the decoder to stop after a single scan
+                        this.decodeSingle();
+
+                }, scanDelay);
+
+            } else
+
+                this.decodeSingle();
 
         }
 
@@ -174,6 +181,12 @@ public abstract class ScannerFragment extends Fragment {
 
         });
 
+
+    }
+
+    public void setScanDelay(long delay) {
+
+        scanDelay = Math.max(0L, delay);
 
     }
 

@@ -1,7 +1,5 @@
 package com.anewgalaxy.androidbarcodescanner;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,7 +9,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 
 public class TestScannerFragment extends ScannerFragment implements View.OnClickListener {
 
