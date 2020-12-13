@@ -8,7 +8,8 @@
     <com.anewgalaxy.androidbarcodescanner.AndroidBarcodeScannerView
         android:id="@+id/barcode_scanner_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
 
         app:scanFrameWidth="300dp"
         app:scanFrameHeight="200dp"
@@ -27,5 +28,45 @@
         app:scanFrameColor="@android:color/white"
         app:scanFrameAlpha="1"
         app:scanFrameStyle="corners" />
+
+    <TextView
+        android:id="@+id/barcode_scanner_result_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:background="@color/colorPrimaryDark" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryShaded">
+
+        <Button
+            android:id="@+id/barcode_scanner_rescan_button"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="1dp"
+            android:text="@string/barcode_scanner_rescan_button"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:backgroundTint="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/barcode_scanner_confirm_button"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:text="@string/barcode_scanner_confirm_button"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:backgroundTint="@color/colorPrimary" />
+
+    </LinearLayout>
 
 </LinearLayout>

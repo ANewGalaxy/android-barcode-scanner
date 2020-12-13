@@ -33,7 +33,7 @@ public class TestScannerFragment extends ScannerFragment implements View.OnClick
     @Override
     public void onClick(@NonNull View view) {
 
-        
+
 
     }
 

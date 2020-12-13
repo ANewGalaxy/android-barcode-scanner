@@ -2,4 +2,6 @@
     <string name="app_name">AndroidBarcodeScanner</string>
 
     <string name="test_scanner_fragment_label">TestScannerFragmentLabel</string>
+    <string name="barcode_scanner_rescan_button">Re-Scan</string>
+    <string name="barcode_scanner_confirm_button">Confirm Scan</string>
 </resources>
