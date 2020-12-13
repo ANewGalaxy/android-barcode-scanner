@@ -49,6 +49,16 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.google.zxing.BarcodeFormat;
+import com.journeyapps.barcodescanner.BarcodeCallback;
+import com.journeyapps.barcodescanner.BarcodeResult;
+import com.journeyapps.barcodescanner.DefaultDecoderFactory;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public abstract class ScannerFragment extends Fragment {
 
     public static final String TAG = ScannerFragment.class.getSimpleName();
@@ -161,7 +171,7 @@ public abstract class ScannerFragment extends Fragment {
 
     }
 
-    public abstract void onBarcodeScanned(@NonNull String barcode, @NonNull String barcodeFormat);
+    public abstract void onBarcodeScanned(@NonNull String barcode, @NonNull BarcodeFormat barcodeFormat);
 
     private void onCameraPermissionResult(boolean isGranted) {
 
@@ -221,11 +231,11 @@ public abstract class ScannerFragment extends Fragment {
 
                 scannerPaused = true;
 
-                this.onBarcodeScanned(result.getText(), result.getText());
+                onBarcodeScanned(result.getText(), result.getBarcodeFormat());
 
             } else
 
-                this.decodeSingle();
+                decodeSingle();
 
         });
 
@@ -251,6 +261,24 @@ public abstract class ScannerFragment extends Fragment {
         if (statusSuccess != null)
 
             this.statusSuccess = statusSuccess;
+
+    }
+
+    public void setBarcodeFormats(final BarcodeFormat...barcodeFormats) {
+
+        if (barcodeFormats.length > 0) {
+
+            List<BarcodeFormat> formatList = Arrays.asList(barcodeFormats);
+
+            if (formatList.contains(null))
+
+                throw new NullPointerException("Failed to set barcode formats");
+
+            barcodeScannerView.setDecoderFactory(new DefaultDecoderFactory(formatList));
+
+        } else
+
+            barcodeScannerView.setDecoderFactory(new DefaultDecoderFactory());
 
     }
 

@@ -36,7 +36,8 @@ public class TestScannerFragment extends ScannerFragment implements View.OnClick
     private Button confirmButton;
     private Button rescanButton;
 
-    private String barcode, barcodeFormat;
+    private BarcodeFormat barcodeFormat;
+    private String barcode;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,6 +74,8 @@ public class TestScannerFragment extends ScannerFragment implements View.OnClick
 
         resultTextView.setText(null);
 
+        super.setBarcodeFormats(BarcodeFormat.CODE_39);
+
     }
 
     @Override
@@ -85,7 +88,7 @@ public class TestScannerFragment extends ScannerFragment implements View.OnClick
     }
 
     @Override
-    public void onBarcodeScanned(@NonNull String barcode, @NonNull String barcodeFormat) {
+    public void onBarcodeScanned(@NonNull String barcode, @NonNull BarcodeFormat barcodeFormat) {
 
         Log.d(TAG, "Barcode Scanned: [" + barcode + ", " + barcodeFormat + "]");
 
@@ -112,11 +115,13 @@ public class TestScannerFragment extends ScannerFragment implements View.OnClick
 
         } else if (id == R.id.barcode_scanner_rescan_button) {
 
-            barcodeFormat = barcode = null;
-
             setFeedbackButtonsEnabled(false);
 
             resultTextView.setText(null);
+
+            barcodeFormat = null;
+
+            barcode = null;
 
             super.resumeScanning();
 

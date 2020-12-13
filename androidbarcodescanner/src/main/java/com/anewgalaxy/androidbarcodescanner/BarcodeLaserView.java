@@ -57,7 +57,7 @@ class BarcodeLaserView extends View {
 
     private static final int[] LASER_ALPHA = {0, 64, 128, 192, 255, 192, 128, 64};
     private static final long ALPHA_ANIMATION_DELAY = 60L;
-    private static final int MAX_RESULT_POINTS = 10;
+    private static final int MAX_RESULT_POINTS = 20;
     private static final int POINT_OPACITY = 0xA0;
     private static int alphaIndex = 0;
 
