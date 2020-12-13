@@ -32,6 +32,8 @@ import com.google.zxing.BarcodeFormat;
 
 public class TestScannerFragment extends ScannerFragment implements View.OnClickListener {
 
+    public static final String TAG = ScannerFragment.class.getSimpleName();
+
     private TextView resultTextView;
     private Button confirmButton;
     private Button rescanButton;
