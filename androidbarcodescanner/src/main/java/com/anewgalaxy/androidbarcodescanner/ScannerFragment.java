@@ -17,9 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import com.journeyapps.barcodescanner.BarcodeResult;
-
-public class ScannerFragment extends Fragment {
+public abstract class ScannerFragment extends Fragment {
 
     public static final String TAG = ScannerFragment.class.getSimpleName();
 
@@ -114,12 +112,7 @@ public class ScannerFragment extends Fragment {
 
     }
 
-    public void onBarcodeScanned(@NonNull BarcodeResult barcodeResult) {
-
-
-
-
-    }
+    public abstract void onBarcodeScanned(@NonNull String barcode, @NonNull String barcodeFormat);
 
     private void onCameraPermissionResult(boolean isGranted) {
 
@@ -173,7 +166,7 @@ public class ScannerFragment extends Fragment {
 
                 scannerPaused = true;
 
-                this.onBarcodeScanned(result);
+                this.onBarcodeScanned(result.getText(), result.getText());
 
             } else
 

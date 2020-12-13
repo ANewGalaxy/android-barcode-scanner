@@ -23,6 +23,13 @@ public class TestScannerFragment extends ScannerFragment {
 
     }
 
+    @Override
+    public void onBarcodeScanned(@NonNull String barcode, @NonNull String barcodeFormat) {
+
+        
+
+    }
+
 
 
 }
