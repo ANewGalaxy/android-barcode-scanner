@@ -71,11 +71,11 @@ public class AndroidBarcodeScannerView extends FrameLayout implements BarcodeCal
     public AndroidBarcodeScannerView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
+        inflate(context, R.layout.android_barcode_scanner_view, this);
+
         barcodeView = new BarcodeView(context);
 
         addView(barcodeView, 0);
-
-        inflate(context, R.layout.android_barcode_scanner_view, this);
 
         barcodeFrameView = (BarcodeFrameView) findAndValidateView(R.id.barcode_frame_view, "R.id.barcode_frame_view");
 
