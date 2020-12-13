@@ -1,4 +1,4 @@
-package com.anewgalaxy.androidbarcodescanner;
+package com.anewgalaxy.scannerexample;
 
 /**
  * Copyright (C) 2020 Tyler Sizse
@@ -26,6 +26,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.anewgalaxy.androidbarcodescanner.ScannerFragment;
 
 public class TestScannerFragment extends ScannerFragment implements View.OnClickListener {
 

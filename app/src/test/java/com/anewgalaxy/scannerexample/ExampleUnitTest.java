@@ -1,4 +1,4 @@
-package com.anewgalaxy.androidbarcodescanner;
+package com.anewgalaxy.scannerexample;
 
 import org.junit.Test;
 

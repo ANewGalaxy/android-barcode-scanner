@@ -1,4 +1,4 @@
-package com.anewgalaxy.androidbarcodescanner;
+package com.anewgalaxy.scannerexample;
 
 /**
  * Copyright (C) 2020 Tyler Sizse
