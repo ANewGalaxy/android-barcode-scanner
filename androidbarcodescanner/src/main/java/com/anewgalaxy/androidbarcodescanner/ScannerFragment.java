@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +43,12 @@ public class ScannerFragment extends Fragment implements BarcodeCallback, View.O
         super.onViewCreated(view, savedInstanceState);
 
         barcodeScannerView = view.findViewById(R.id.barcode_scanner_view);
+
+        if (barcodeScannerView == null) {
+
+            Log.e(TAG, "Could not find barcodeScannerView");
+
+        }
 
     }
 
@@ -140,20 +148,24 @@ public class ScannerFragment extends Fragment implements BarcodeCallback, View.O
 
     public void resumeScanning() {
 
-        barcodeScannerView.resume();
+        if (barcodeScannerView != null && scannerPaused) {
 
-        scannerPaused = false;
+            barcodeScannerView.resume();
 
-        Handler handler = new Handler();
-        handler.postDelayed(() -> {
+            scannerPaused = false;
 
-            // As long as the scanner hasn't been paused, start the decoder
-            if (!scannerPaused)
+            Handler handler = new Handler(Looper.myLooper());
+            handler.postDelayed(() -> {
 
-                // Tells the decoder to stop after a single scan
-                barcodeScannerView.decodeSingle(this);
+                // As long as the scanner hasn't been paused, start the decoder
+                if (!scannerPaused)
 
-        }, 1500L);
+                    // Tells the decoder to stop after a single scan
+                    barcodeScannerView.decodeSingle(this);
+
+            }, 1500L);
+
+        }
 
     }
 

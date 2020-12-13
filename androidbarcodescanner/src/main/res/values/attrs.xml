@@ -15,7 +15,7 @@
  * limitations under the License.
 -->
 <resources>
-    <declare-styleable name="CustomScannerView">
+    <declare-styleable name="AndroidBarcodeScannerView">
         <attr name="scanFrameWidth" format = "dimension" />
         <attr name="scanFrameHeight" format = "dimension" />
 

@@ -74,13 +74,13 @@ class BarcodeMaskView extends View {
         if (attrs != null) {
 
             TypedArray a = context.getTheme().obtainStyledAttributes(
-                    attrs, R.styleable.CustomScannerView, 0, 0);
+                    attrs, R.styleable.AndroidBarcodeScannerView, 0, 0);
 
             try {
 
-                PAINT.setColor(a.getColor(R.styleable.CustomScannerView_scanMaskColor, 0x000000));
+                PAINT.setColor(a.getColor(R.styleable.AndroidBarcodeScannerView_scanMaskColor, 0x000000));
 
-                PAINT.setAlpha((int) (0xFF * a.getFloat(R.styleable.CustomScannerView_scanMaskAlpha, 0.375f)));
+                PAINT.setAlpha((int) (0xFF * a.getFloat(R.styleable.AndroidBarcodeScannerView_scanMaskAlpha, 0.375f)));
 
             } catch (RuntimeException exception) {
 

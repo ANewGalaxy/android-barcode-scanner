@@ -73,10 +73,6 @@ public class AndroidBarcodeScannerView extends FrameLayout implements BarcodeCal
 
         inflate(context, R.layout.android_barcode_scanner_view, this);
 
-        barcodeView = new BarcodeView(context);
-
-        addView(barcodeView, 0);
-
         barcodeFrameView = (BarcodeFrameView) findAndValidateView(R.id.barcode_frame_view, "R.id.barcode_frame_view");
 
         barcodeLaserView = (BarcodeLaserView) findAndValidateView(R.id.barcode_laser_view, "R.id.barcode_laser_view");
@@ -85,15 +81,15 @@ public class AndroidBarcodeScannerView extends FrameLayout implements BarcodeCal
 
         barcodeStatusView = (TextView) findAndValidateView(R.id.barcode_status_view, "R.id.barcode_status_view");
 
-        //barcodeView = (BarcodeView) findAndValidateView(R.id.barcode_surface_view, "R.id.barcode_surface_view");
+        barcodeView = (BarcodeView) findAndValidateView(R.id.barcode_surface_view, "R.id.barcode_surface_view");
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CustomScannerView);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AndroidBarcodeScannerView);
 
         try {
 
-            int w = a.getDimensionPixelSize(R.styleable.CustomScannerView_scanFrameWidth, 900);
+            int w = a.getDimensionPixelSize(R.styleable.AndroidBarcodeScannerView_scanFrameWidth, 900);
 
-            int h = a.getDimensionPixelSize(R.styleable.CustomScannerView_scanFrameHeight, 600);
+            int h = a.getDimensionPixelSize(R.styleable.AndroidBarcodeScannerView_scanFrameHeight, 600);
 
             barcodeView.setFramingRectSize(new Size(w, h));
 

@@ -78,21 +78,21 @@ class BarcodeFrameView extends View {
         if (attrs != null) {
 
             TypedArray a = context.getTheme().obtainStyledAttributes(
-                    attrs, R.styleable.CustomScannerView, 0, 0);
+                    attrs, R.styleable.AndroidBarcodeScannerView, 0, 0);
 
             try {
 
-                PAINT.setStrokeWidth(a.getInteger(R.styleable.CustomScannerView_scanFrameThickness, 10));
+                PAINT.setStrokeWidth(a.getInteger(R.styleable.AndroidBarcodeScannerView_scanFrameThickness, 10));
 
-                PAINT.setColor(a.getColor(R.styleable.CustomScannerView_scanFrameColor, 0xFFFFFF));
+                PAINT.setColor(a.getColor(R.styleable.AndroidBarcodeScannerView_scanFrameColor, 0xFFFFFF));
 
-                PAINT.setAlpha((int) (0xFF * a.getFloat(R.styleable.CustomScannerView_scanFrameAlpha, 1f)));
+                PAINT.setAlpha((int) (0xFF * a.getFloat(R.styleable.AndroidBarcodeScannerView_scanFrameAlpha, 1f)));
 
-                frameCornerSize = a.getDimensionPixelSize(R.styleable.CustomScannerView_scanFrameCornerSize, 48);
+                frameCornerSize = a.getDimensionPixelSize(R.styleable.AndroidBarcodeScannerView_scanFrameCornerSize, 48);
 
-                frameOffset = a.getDimensionPixelSize(R.styleable.CustomScannerView_scanFrameOffset, 10);
+                frameOffset = a.getDimensionPixelSize(R.styleable.AndroidBarcodeScannerView_scanFrameOffset, 10);
 
-                frameStyle = a.getInteger(R.styleable.CustomScannerView_scanFrameStyle, 2);
+                frameStyle = a.getInteger(R.styleable.AndroidBarcodeScannerView_scanFrameStyle, 2);
 
             } catch (RuntimeException exception) {
 

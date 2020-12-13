@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AndroidBarcodeScanner</string>
+
+    <string name="test_scanner_fragment_label">TestScannerFragmentLabel</string>
 </resources>

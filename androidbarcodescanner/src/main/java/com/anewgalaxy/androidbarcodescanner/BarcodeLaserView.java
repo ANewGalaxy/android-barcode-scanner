@@ -90,17 +90,17 @@ class BarcodeLaserView extends View {
         if (attrs != null) {
 
             TypedArray a = context.getTheme().obtainStyledAttributes(
-                    attrs, R.styleable.CustomScannerView, 0, 0);
+                    attrs, R.styleable.AndroidBarcodeScannerView, 0, 0);
 
             try {
                 
-                PAINT_RP.setColor(a.getColor(R.styleable.CustomScannerView_scanResultPointsColor, 0xFFFFFF));
+                PAINT_RP.setColor(a.getColor(R.styleable.AndroidBarcodeScannerView_scanResultPointsColor, 0xFFFFFF));
 
-                PAINT.setColor(a.getColor(R.styleable.CustomScannerView_scanLaserColor, 0xFF0000));
+                PAINT.setColor(a.getColor(R.styleable.AndroidBarcodeScannerView_scanLaserColor, 0xFF0000));
 
-                PAINT.setStrokeWidth(a.getInteger(R.styleable.CustomScannerView_scanLaserThickness, 4));
+                PAINT.setStrokeWidth(a.getInteger(R.styleable.AndroidBarcodeScannerView_scanLaserThickness, 4));
 
-                pointRadius = a.getInteger(R.styleable.CustomScannerView_scanResultPointsRadius, 12);
+                pointRadius = a.getInteger(R.styleable.AndroidBarcodeScannerView_scanResultPointsRadius, 12);
 
             } catch (RuntimeException exception) {
 
