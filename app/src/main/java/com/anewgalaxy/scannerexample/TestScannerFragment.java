@@ -28,6 +28,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.anewgalaxy.androidbarcodescanner.ScannerFragment;
+import com.google.zxing.BarcodeFormat;
 
 public class TestScannerFragment extends ScannerFragment implements View.OnClickListener {
 
