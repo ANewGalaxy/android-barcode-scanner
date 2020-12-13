@@ -1,6 +1,37 @@
 package com.anewgalaxy.androidbarcodescanner;
 
+/**
+ * Copyright (C) 2020 Tyler Sizse
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Copyright (C) 2012-2018 ZXing authors, Journey Mobile
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +45,7 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts.RequestPermission;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -27,6 +59,22 @@ public abstract class ScannerFragment extends Fragment {
     private AndroidBarcodeScannerView barcodeScannerView;
     private boolean scannerPaused = true;
     private long scanDelay = 1500L;
+
+    private String statusPermission;
+    private String statusScanning;
+    private String statusSuccess;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        statusPermission = getString(R.string.scan_status_permission);
+
+        statusScanning = getString(R.string.scan_status_scanning);
+
+        statusSuccess = getString(R.string.scan_status_success);
+
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -57,7 +105,7 @@ public abstract class ScannerFragment extends Fragment {
                 != PackageManager.PERMISSION_GRANTED) {
 
             // Update the status text to inform the guest that camera permission is required
-            barcodeScannerView.setStatusText(getString(R.string.scan_status_permission));
+            barcodeScannerView.setStatusText(statusPermission);
 
             /*// Clear the result text view
             resultTextView.setText(null);*/
@@ -134,7 +182,7 @@ public abstract class ScannerFragment extends Fragment {
 
         if (barcodeScannerView != null && scannerPaused) {
 
-            barcodeScannerView.setStatusText(getString(R.string.scan_status_scanning));
+            barcodeScannerView.setStatusText(statusScanning);
 
             barcodeScannerView.resume();
 
@@ -167,7 +215,7 @@ public abstract class ScannerFragment extends Fragment {
 
             if (result != null && result.getText() != null) {
 
-                barcodeScannerView.setStatusText(getString(R.string.scan_status_success));
+                barcodeScannerView.setStatusText(statusSuccess);
 
                 barcodeScannerView.pause();
 
@@ -187,6 +235,22 @@ public abstract class ScannerFragment extends Fragment {
     public void setScanDelay(long delay) {
 
         scanDelay = Math.max(0L, delay);
+
+    }
+
+    public void setCustomStatus(String statusPermission, String statusScanning, String statusSuccess) {
+
+        if (statusPermission != null)
+
+            this.statusPermission = statusPermission;
+
+        if (statusScanning != null)
+
+            this.statusScanning = statusScanning;
+
+        if (statusSuccess != null)
+
+            this.statusSuccess = statusSuccess;
 
     }
 
