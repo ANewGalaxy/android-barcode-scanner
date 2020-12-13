@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scan_status_permission">Camera permission required.</string>
+    <string name="scan_status_scanning">Place a barcode inside the scanner frame to scan.</string>
+    <string name="scan_status_success">Scan successful.</string>
+</resources>

@@ -17,10 +17,9 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import com.journeyapps.barcodescanner.BarcodeCallback;
 import com.journeyapps.barcodescanner.BarcodeResult;
 
-public class ScannerFragment extends Fragment implements BarcodeCallback, View.OnClickListener {
+public class ScannerFragment extends Fragment {
 
     public static final String TAG = ScannerFragment.class.getSimpleName();
 
@@ -44,11 +43,9 @@ public class ScannerFragment extends Fragment implements BarcodeCallback, View.O
 
         barcodeScannerView = view.findViewById(R.id.barcode_scanner_view);
 
-        if (barcodeScannerView == null) {
+        if (barcodeScannerView == null)
 
-            Log.e(TAG, "Could not find barcodeScannerView");
-
-        }
+            Log.e(TAG, "Error finding view with the following id: barcode_scanner_view");
 
     }
 
@@ -60,10 +57,10 @@ public class ScannerFragment extends Fragment implements BarcodeCallback, View.O
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
 
-            /*// Update the status text to inform the guest that camera permission is required
-            barcodeScannerView.setStatusText();
+            // Update the status text to inform the guest that camera permission is required
+            barcodeScannerView.setStatusText(getString(R.string.scan_status_permission));
 
-            // Clear the result text view
+            /*// Clear the result text view
             resultTextView.setText(null);*/
 
             if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
@@ -117,17 +114,10 @@ public class ScannerFragment extends Fragment implements BarcodeCallback, View.O
 
     }
 
-    @Override
-    public void onClick(View v) {
+    public void onBarcodeScanned(@NonNull BarcodeResult barcodeResult) {
 
-    }
 
-    @Override
-    public void barcodeResult(BarcodeResult result) {
 
-        barcodeScannerView.pause();
-
-        scannerPaused = true;
 
     }
 
@@ -150,6 +140,8 @@ public class ScannerFragment extends Fragment implements BarcodeCallback, View.O
 
         if (barcodeScannerView != null && scannerPaused) {
 
+            barcodeScannerView.setStatusText(getString(R.string.scan_status_scanning));
+
             barcodeScannerView.resume();
 
             scannerPaused = false;
@@ -161,11 +153,34 @@ public class ScannerFragment extends Fragment implements BarcodeCallback, View.O
                 if (!scannerPaused)
 
                     // Tells the decoder to stop after a single scan
-                    barcodeScannerView.decodeSingle(this);
+                    this.decodeSingle();
 
             }, 1500L);
 
         }
+
+    }
+
+    private void decodeSingle() {
+
+        barcodeScannerView.decodeSingle(result -> {
+
+            if (result != null && result.getText() != null) {
+
+                barcodeScannerView.setStatusText(getString(R.string.scan_status_success));
+
+                barcodeScannerView.pause();
+
+                scannerPaused = true;
+
+                this.onBarcodeScanned(result);
+
+            } else
+
+                this.decodeSingle();
+
+        });
+
 
     }
 
