@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 
-public class TestScannerFragment extends ScannerFragment {
+public class TestScannerFragment extends ScannerFragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -25,6 +25,13 @@ public class TestScannerFragment extends ScannerFragment {
 
     @Override
     public void onBarcodeScanned(@NonNull String barcode, @NonNull String barcodeFormat) {
+
+
+
+    }
+
+    @Override
+    public void onClick(@NonNull View view) {
 
         
 
