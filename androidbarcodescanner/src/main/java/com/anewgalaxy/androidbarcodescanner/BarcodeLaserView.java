@@ -67,9 +67,9 @@ class BarcodeLaserView extends View {
     private Stack<ResultPoint> currResultPoints = new Stack<>();
     private Stack<ResultPoint> prevResultPoints = new Stack<>();
 
-    private int pointRadius = 12;
-
     private CameraPreview cameraPreview;
+
+    private int pointRadius = 12;
 
     public BarcodeLaserView(@NonNull Context context) {
         super(context);

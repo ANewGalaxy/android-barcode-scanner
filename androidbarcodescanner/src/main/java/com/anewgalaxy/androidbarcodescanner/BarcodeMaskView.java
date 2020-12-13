@@ -115,9 +115,6 @@ class BarcodeMaskView extends View {
 
             Rect framingRect = cameraPreview.getFramingRect();
 
-        /*Rect framingRect = new Rect(getWidth() / 2 - 150, getHeight() / 2 - 100,
-                getWidth() / 2 + 150, getHeight() / 2 + 100);*/
-
             if (framingRect != null) {
 
                 final int VIEW_W = getWidth();
