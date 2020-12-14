@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">AndroidBarcodeScanner</string>
 
-    <string name="test_scanner_fragment_label">TestScannerFragmentLabel</string>
-    <string name="barcode_scanner_rescan_button">Re-Scan</string>
-    <string name="barcode_scanner_confirm_button">Confirm Scan</string>
+    <string name="scanner_fragment_label">ScannerFragment</string>
+    <string name="scanner_rescan_button">Re-Scan Barcode</string>
+    <string name="scanner_confirm_button">Confirm Scan</string>
+    <string name="scanner_waiting_for_scan">Waiting for scan …</string>
+    <string name="scanner_camera_permission_required">Camera permission required.</string>
+    <string name="scanner_confirm_msg">Please confirm that the barcode is correct.</string>
 </resources>

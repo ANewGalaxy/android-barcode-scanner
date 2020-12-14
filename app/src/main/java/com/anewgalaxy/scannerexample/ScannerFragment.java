@@ -17,29 +17,29 @@ package com.anewgalaxy.scannerexample;
  */
 
 import android.os.Bundle;
-import android.view.Menu;
+import android.util.Log;
+import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
 
-public class MainActivity extends AppCompatActivity {
+import com.google.zxing.BarcodeFormat;
+
+public class ScannerFragment extends AbstractScannerFragment {
+
+    public static final String TAG = ScannerFragment.class.getSimpleName();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        // Set the support action bar to the respective toolbar from the layout file
-        setSupportActionBar(findViewById(R.id.main_action_bar));
+        super.setDecoderFormats(BarcodeFormat.CODE_39, BarcodeFormat.UPC_A);
 
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    protected void onBarcodeConfirmed(@NonNull String barcode, @NonNull BarcodeFormat format) {
 
-        // Inflate the toolbar with the menu menu_main
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-
-        return true;
+        Log.d(TAG, "Barcode Confirmed: [" + barcode + ", " + format.toString() + "]");
 
     }
 

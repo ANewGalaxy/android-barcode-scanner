@@ -2,14 +2,14 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/TestScannerFragment"
+    app:startDestination="@id/ScannerFragment"
     android:id="@+id/nav_graph" >
 
     <fragment
-        android:id="@+id/TestScannerFragment"
-        android:name="com.anewgalaxy.scannerexample.TestScannerFragment"
-        android:label="@string/test_scanner_fragment_label"
-        tools:layout="@layout/fragment_test_scanner" >
+        android:id="@+id/ScannerFragment"
+        android:name="com.anewgalaxy.scannerexample.ScannerFragment"
+        android:label="@string/scanner_fragment_label"
+        tools:layout="@layout/fragment_scanner" >
 
     </fragment>
 
